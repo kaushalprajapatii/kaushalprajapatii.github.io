@@ -39,15 +39,13 @@ a {
     background: rgba(10, 10, 10, 0.7);
     backdrop-filter: blur(15px);
     border-right: 1px solid rgba(231, 76, 60, 0.3);
-    z-index: 1000; /* Increased z-index */
+    z-index: 1000;
     display: flex;
     flex-direction: column;
     padding: 20px;
     box-sizing: border-box;
-    transition: transform 0.3s ease-in-out; /* Added for smooth animation */
+    transition: transform 0.3s ease-in-out;
 }
-
-/* NEW: Header within the sidebar to align logo and close button */
 .sidebar-header {
     display: flex;
     justify-content: space-between;
@@ -58,9 +56,8 @@ a {
     font-family: 'Marcellus', serif;
     font-size: 2.2rem;
     font-weight: 600;
-    margin: 0; /* Removed margin-bottom */
+    margin: 0;
 }
-
 .nav-links {
     list-style: none;
     padding: 0;
@@ -87,9 +84,9 @@ a {
     color: #fff;
 }
 
-/* NEW: Hamburger Menu & Close Button Styles */
+/* Hamburger Menu & Close Button Styles */
 .menu-toggle, .close-btn {
-    display: none; /* Hidden by default on desktop */
+    display: none;
     background: #e74c3c;
     color: #fff;
     border: none;
@@ -97,7 +94,7 @@ a {
     border-radius: 8px;
     cursor: pointer;
     z-index: 1001;
-    font-size: 1.8rem; /* Increased icon size */
+    font-size: 1.8rem;
     line-height: 1;
 }
 .menu-toggle {
@@ -109,59 +106,83 @@ a {
 /* Main Content Area */
 .main-content {
     margin-left: 260px;
-    transition: margin-left 0.3s ease-in-out; /* Added transition */
+    transition: margin-left 0.3s ease-in-out;
 }
 section {
     min-height: 60vh;
-    padding: 60px 10%;
+    padding: 80px 10%; /* Increased top/bottom padding */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     border-bottom: 1px solid rgba(231, 76, 60, 0.2);
 }
+.home-img {
+    position: relative;
+    z-index: 2;
+    max-width: 350px; /* Slightly smaller default size */
+    width: 100%;
+    height: auto;
+    border: 3px solid rgb(255, 255, 255);
+    border-radius: 10%;
+    /* UPDATED: Added a professional shadow */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); 
+    animation: slideInFromRight 1.2s ease-out forwards;
+}
 /* ... rest of your existing CSS ... */
 
+
+/******************************************/
 /* UPDATED: Responsive Adjustments for Mobile */
+/******************************************/
 @media (max-width: 992px) {
     .sidebar {
-        /* Hides sidebar off-screen to the left */
         transform: translateX(-100%); 
     }
     .sidebar.active {
-        /* Slides sidebar into view when active */
         transform: translateX(0);
     }
     .main-content {
         margin-left: 0;
     }
     .menu-toggle, .close-btn {
-        display: block; /* Show buttons on mobile */
+        display: block;
     }
+    
+    /* NEW: Better padding on all sections for mobile */
+    section {
+        padding: 60px 25px; /* Guarantees 25px space on left/right */
+    }
+
     #home {
-        flex-direction: column;
-        text-align: center;
-        padding-top: 100px; /* Add padding to avoid content being under menu button */
+        padding-top: 80px;
     }
+
     .home-content-wrapper {
-        flex-direction: column-reverse; /* Puts image above text on mobile */
-        gap: 2rem;
+        /* This is the key change: stacks image on top of text */
+        flex-direction: column-reverse; 
+        gap: 2.5rem; /* Adds space between image and text */
     }
+
     .home-text {
         max-width: 100%;
+        /* NEW: Centers all the text in the intro section */
+        text-align: center; 
     }
+
     .home-title {
-        text-align: center;
+        font-size: 3.5rem; /* Adjusted font size for mobile */
     }
-    .section-title {
-        text-align: center; /* Center section titles on mobile */
+
+    .home-subtitle {
+        font-size: 1rem; /* Adjusted font size for mobile */
     }
-}
-@media (max-width: 576px) {
-    .home-title {
-        font-size: 3rem;
-    }
+    
     .home-img {
-        max-width: 250px;
+        max-width: 280px; /* Control image size on mobile */
+    }
+
+    .section-title {
+        text-align: center;
     }
 }
